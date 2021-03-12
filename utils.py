@@ -5,7 +5,6 @@ from itertools import combinations
 def prime_numbers(n):
     i = 0
     all_numbers = np.arange(2, n)
-    num_list = list(range(2, n))
     for num in all_numbers[:int(np.sqrt(n)+1)]:
         i += 1
         prime_array = all_numbers[:i]
@@ -42,3 +41,17 @@ def get_divisors(n, all_primes):
 
     divisors = [1] + list(set(divisors))
     return divisors
+
+
+def prime_numbers_2(max_n, n=10001, min_n=2):
+
+    all_numbers = np.arange(min_n, max_n)
+    prime_array = []
+    it = 0
+    prime_list= []
+    while it <= np.sqrt(n) and it<=n and all_numbers.shape[0]>0:
+        num = all_numbers[0]
+        all_numbers = all_numbers[all_numbers%num!=0]
+        prime_list.append(num)
+        it += 1
+    return prime_list
